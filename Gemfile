@@ -1,9 +1,12 @@
 source "https://rubygems.org"
 
+# Specify your gem's dependencies in omniauth-mercadolibre.gemspec
 gemspec
 
-gem 'rspec'
-
-group :example do
-  gem 'sinatra'
+group :development, :test do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-bundler'
+  gem 'rb-fsevent'
+  gem 'growl'
 end
