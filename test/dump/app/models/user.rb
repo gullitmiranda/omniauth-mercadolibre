@@ -8,19 +8,14 @@ class User < ActiveRecord::Base
     def find_for_mercadolibre_oauth(auth)
       user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
-      Rails.logger.debug "\n #MercadoLibreResponse= #{auth.to_json} \n"
+      Rails.logger.debug "\n # MercadoLibreResponse= #{auth.to_json} \n"
 
-
-      # unless user
-      #   user = User.create!(firstname:  auth.info.first_name,
-      #                       lastname:   auth.info.last_name,
-      #                       username:   auth.info.nickname,
-      #                       provider:   auth.provider,
-      #                       uid:        auth.uid,
-      #                       email:      auth.info.email,
-      #                       password:   Devise.friendly_token[0,20],
-      #                       remote_avatar_url: "https://graph.facebook.com/#{auth.uid}/picture?type=large&width=256")
-      # end
+      unless user
+        user = User.create!(provider:   auth.provider,
+                            uid:        auth.uid,
+                            email:      auth.info.email,
+                            password:   Devise.friendly_token[0,20])
+      end
 
       user
     end
