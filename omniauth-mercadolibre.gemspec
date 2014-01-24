@@ -18,10 +18,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency 'omniauth', '~> 1.0'
-  gem.add_runtime_dependency 'omniauth-oauth2'
-  gem.add_development_dependency "rspec", "~> 2.14.1"
-  # gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'rack-test'
-  gem.add_development_dependency 'simplecov'
-  gem.add_development_dependency 'webmock'
+  gem.add_runtime_dependency 'omniauth-oauth2', '~> 1.1', '>= 1.1.2'
+  gem.add_development_dependency 'rspec', '~> 2.14', '>= 2.14.1'
+  gem.add_development_dependency 'rack-test', '~> 0'
+  gem.add_development_dependency 'simplecov', '~> 0'
+  gem.add_development_dependency 'webmock', '~> 0'
 end
