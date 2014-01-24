@@ -9,7 +9,7 @@ on the [MercadoLibre Applications Page](http://applications.mercadolivre.com.br)
 Add to your `Gemfile`:
 
 ```ruby
-gem 'omniauth-facebook'
+gem 'omniauth-mercadolibre'
 ```
 
 Then `bundle install`.
