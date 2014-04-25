@@ -3,9 +3,13 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class MercadoLibre < OmniAuth::Strategies::OAuth2
+      # API_ROOT_URL  = ENV["MERCADOLIBRE_API_ROOT_URL" ] || "https://api.mercadolibre.com"
+      # AUTH_URL      = ENV["MERCADOLIBRE_AUTH_URL"     ] || "https://auth.mercadolibre.com/authorization"
+      # OAUTH_URL     = ENV["MERCADOLIBRE_OAUTH_URL"    ] || "https://api.mercadolibre.com/oauth/token"
+
       API_ROOT_URL  = ENV["MERCADOLIBRE_API_ROOT_URL" ] || "https://api.mercadolibre.com"
-      AUTH_URL      = ENV["MERCADOLIBRE_AUTH_URL"     ] || "https://auth.mercadolibre.com/authorization"
-      OAUTH_URL     = ENV["MERCADOLIBRE_OAUTH_URL"    ] || "https://api.mercadolibre.com/oauth/token"
+      AUTH_URL      = ENV["MERCADOLIBRE_AUTH_URL"     ] || "http://auth.mercadolivre.com.br/authorization"
+      OAUTH_URL     = ENV["MERCADOLIBRE_OAUTH_URL"    ] || "/oauth/token"
 
       option :client_options, {
         site: API_ROOT_URL,
