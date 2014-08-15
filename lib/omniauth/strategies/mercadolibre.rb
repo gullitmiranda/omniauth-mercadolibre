@@ -4,8 +4,10 @@ module OmniAuth
   module Strategies
     class MercadoLibre < OmniAuth::Strategies::OAuth2
       API_ROOT_URL  = ENV["MERCADOLIBRE_API_ROOT_URL" ] || "https://api.mercadolibre.com"
-      AUTH_URL      = ENV["MERCADOLIBRE_AUTH_URL"     ] || "https://auth.mercadolibre.com/authorization"
-      OAUTH_URL     = ENV["MERCADOLIBRE_OAUTH_URL"    ] || "https://api.mercadolibre.com/oauth/token"
+      AUTH_URL      = ENV["MERCADOLIBRE_AUTH_URL"     ] || "http://auth.mercadolivre.com.br/authorization"
+      OAUTH_URL     = ENV["MERCADOLIBRE_OAUTH_URL"    ] || "/oauth/token"
+
+      option :name, "mercadolibre"
 
       option :client_options, {
         site: API_ROOT_URL,
@@ -26,6 +28,10 @@ module OmniAuth
       end
 
       def build_access_token
+        puts "\n\n\n\n\n\n"
+        puts " ================== callback_url= #{callback_url} ================== "
+        puts " ================== options= #{options} ================== "
+        puts "\n\n\n\n\n\n"
         token_params = {
           :code => request.params['code'],
           :redirect_uri => callback_url,
