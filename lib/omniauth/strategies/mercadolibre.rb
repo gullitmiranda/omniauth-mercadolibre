@@ -21,9 +21,9 @@ module OmniAuth
 
       def authorize_params
         super.tap do |params|
-          params[:response_type] = "code"
-          params[:client_id] = client.id
-          params[:redirect_uri] ||= callback_url
+          params[:response_type ] = "code"
+          params[:client_id     ] = client.id
+          params[:redirect_uri  ] = callback_url
         end
       end
 
@@ -33,11 +33,11 @@ module OmniAuth
         puts " ================== options= #{options} ================== "
         puts "\n\n\n\n\n\n"
         token_params = {
-          :code => request.params['code'],
-          :redirect_uri => callback_url,
-          :client_id => client.id,
-          :client_secret => client.secret,
-          :grant_type => 'authorization_code'
+          code:           request.params['code'],
+          redirect_uri:   callback_url,
+          client_id:      client.id,
+          client_secret:  client.secret,
+          grant_type:     'authorization_code'
         }
         client.get_token(token_params)
       end
