@@ -23,7 +23,7 @@ module OmniAuth
         super.tap do |params|
           params[:response_type ] = "code"
           params[:client_id     ] = client.id
-          params[:redirect_uri  ] = callback_url
+          params[:redirect_uri  ] = callback_url.to_s.downcase
         end
       end
 
