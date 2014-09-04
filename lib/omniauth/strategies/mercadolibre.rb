@@ -20,6 +20,10 @@ module OmniAuth
       end
 
       def authorize_params
+        Rails.logger.info "\n\n\n\n\n\n"
+        Rails.logger.info " ================== callback_url: \n #{callback_url} \n #{callback_url.to_s.downcase}\n ================== "
+        Rails.logger.info "\n\n\n\n\n\n"
+
         super.tap do |params|
           params[:response_type ] = "code"
           params[:client_id     ] = client.id
@@ -28,10 +32,11 @@ module OmniAuth
       end
 
       def build_access_token
-        puts "\n\n\n\n\n\n"
-        puts " ================== callback_url= #{callback_url} ================== "
-        puts " ================== options= #{options} ================== "
-        puts "\n\n\n\n\n\n"
+        Rails.logger.info "\n\n\n\n\n\n"
+        Rails.logger.info " ================== callback_url= #{callback_url} ================== "
+        Rails.logger.info " ================== options= #{options} ================== "
+        Rails.logger.info "\n\n\n\n\n\n"
+
         token_params = {
           code:           request.params['code'],
           redirect_uri:   callback_url,
