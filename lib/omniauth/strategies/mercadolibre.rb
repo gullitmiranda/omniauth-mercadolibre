@@ -33,13 +33,14 @@ module OmniAuth
 
       def build_access_token
         Rails.logger.info "\n\n\n\n\n\n"
-        Rails.logger.info " ================== callback_url= #{callback_url} ================== "
-        Rails.logger.info " ================== options= #{options} ================== "
+        Rails.logger.info " ================== build_access_token callback_url= #{callback_url} ================== "
+        Rails.logger.info " ================== build_access_token callback_url= #{callback_url.to_s.downcase} ================== "
+        Rails.logger.info " ================== build_access_token options= #{options} ================== "
         Rails.logger.info "\n\n\n\n\n\n"
 
         token_params = {
           code:           request.params['code'],
-          redirect_uri:   callback_url,
+          redirect_uri:   callback_url.to_s.downcase,
           client_id:      client.id,
           client_secret:  client.secret,
           grant_type:     'authorization_code'
